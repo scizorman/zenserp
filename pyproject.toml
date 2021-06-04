@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "zenserp"
+version = "0.1.0"
+description = "The Python client library for Zenserp."
+authors = ["scizorman <tueda1207@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pysen = {version = "0.9.1", extras = ["lint"]}
+
+[tool.pysen]
+version = "0.9.1"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+mypy_preset = "strict"
+line_length = 88
+py_version = "py39"
+
+[[tool.pysen.lint_mypy_targets]]
+paths = ["zenserp", "tests"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
