@@ -60,3 +60,44 @@ class Client:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
             return resp.json()["remaining_requests"]
+
+    def search(
+        self,
+        query: str,
+        location: Optional[str] = None,
+        search_engine: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        tbm: Optional[str] = None,
+        device: Optional[str] = None,
+        timeframe: Optional[str] = None,
+        gl: Optional[str] = None,
+        lr: Optional[str] = None,
+        hl: Optional[str] = None,
+        latitude: Optional[str] = None,
+        longitude: Optional[str] = None,
+    ) -> Any:
+        url = urljoin(self._base_url, "api/v2/search")
+        params = {
+            k: v
+            for k, v in {
+                "q": query,
+                "location": location,
+                "search_engine": search_engine,
+                "num": limit,
+                "start": offset,
+                "tbm": tbm,
+                "device": device,
+                "timeframe": timeframe,
+                "gl": gl,
+                "lr": lr,
+                "hl": hl,
+                "lat": latitude,
+                "lng": longitude,
+            }.items()
+            if v is not None
+        }
+        with self._session.get(url, params=params) as resp:
+            resp.encoding = resp.apparent_encoding
+            self.handle_error(resp)
+            return resp.json()
