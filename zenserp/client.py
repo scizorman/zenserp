@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from types import TracebackType
 from typing import Any, Optional, Type
-from urllib.parse import urljoin
 
 from requests import Response, Session
 
+STATUS_URL = "https://app.zenserp.com/api/v2/status"
+SEARCH_URL = "https://app.zenserp.com/api/v2/search"
+
 
 class Client:
-    _base_url = "https://app.zenserp.com"
-
     def __init__(self, api_key: str):
         if api_key == "":
             raise ValueError("no API key provided")
@@ -55,8 +55,7 @@ class Client:
         Returns:
             int: The remaining requests of your API key.
         """
-        url = urljoin(self._base_url, "api/v2/status")
-        with self._session.get(url) as resp:
+        with self._session.get(STATUS_URL) as resp:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
             return resp.json()["remaining_requests"]
@@ -77,7 +76,6 @@ class Client:
         latitude: Optional[str] = None,
         longitude: Optional[str] = None,
     ) -> Any:
-        url = urljoin(self._base_url, "api/v2/search")
         params = {
             k: v
             for k, v in {
@@ -97,7 +95,7 @@ class Client:
             }.items()
             if v is not None
         }
-        with self._session.get(url, params=params) as resp:
+        with self._session.get(SEARCH_URL, params=params) as resp:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
             return resp.json()
