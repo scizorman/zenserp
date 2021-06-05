@@ -13,6 +13,11 @@ SEARCH_URL = "https://app.zenserp.com/api/v2/search"
 
 class Client:
     def __init__(self, api_key: str):
+        """The client to request Zenserp.
+
+        Args:
+            api_key (str): Your API key of Zenserp.
+        """
         if api_key == "":
             raise ValueError("no API key provided")
         self._session = Session()
@@ -78,6 +83,32 @@ class Client:
         latitude: Optional[str] = None,
         longitude: Optional[str] = None,
     ) -> Any:
+        """Google Search.
+
+        Args:
+            query (str): A keyword to query.
+            location (:obj:`str`, optional): A geolocation used in the query.
+            search_engine (:obj:`str`, optional): A URL of the search engine to query.
+            limit (:obj:`int`, optional): A number of search results. It can be 1 - 100.
+            offset (:obj:`int`, optional): An offset for the search results.
+            tbm (:obj:`TBM`, optional): A type of the Google Search.
+            device (:obj:`Device`, optional): A device to use for the Google Search.
+            timeframe (:obj:`str`, optional): Time interval of you interests.
+            gl (:obj:`str`, optional):
+                A country code that means the country to use for the Google Search.
+                It is automatically detected from the 'search_engine' if not supplied.
+            lr (:obj:`str`, optional):
+                One or multiple country codes that limits languages the Google Search.
+                It is automatically detected from the 'search_engine' if not supplied.
+            hl (:obj:`str`, optional):
+                A language code that means the language to use for the Google Search.
+                It is automatically detected from the 'search_engine' if not supplied.
+            latitude (:obj:`str`, optional): A latitude of a geolocation used in the query.
+            longitude (:obj:`str`, optional): A longitude of a geolocation used in the query.
+
+        Returns:
+            dict: Search results from the search via Zenserp.
+        """
         search_input = SearchInput(
             query,
             location=location,
