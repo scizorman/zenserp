@@ -17,6 +17,9 @@ isort = "5.8.0"
 mypy = "0.812"
 pytest = "6.2.4"
 
+[tool.poetry.scripts]
+zenserp = "zenserp.cli:cli"
+
 [tool.isort]
 profile = "black"
 multi_line_output = 3
