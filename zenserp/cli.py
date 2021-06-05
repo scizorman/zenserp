@@ -1,4 +1,6 @@
+import json
 import sys
+from typing import Optional
 
 import click
 
@@ -8,13 +10,7 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(context_settings=CONTEXT_SETTINGS)
-@click.option(
-    "-k",
-    "--api-key",
-    type=str,
-    help="Your API key of Zenserp",
-    required=True,
-)
+@click.option("-k", "--api-key", type=str, help="Your API key of Zenserp.", required=True)
 @click.pass_context
 def cli(ctx: click.Context, api_key: str) -> None:
     """The CLI to request Zenserp."""
