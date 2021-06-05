@@ -5,6 +5,8 @@ from typing import Any, Optional, Type
 
 from requests import Response, Session
 
+from .search import TBM, Device, SearchInput
+
 STATUS_URL = "https://app.zenserp.com/api/v2/status"
 SEARCH_URL = "https://app.zenserp.com/api/v2/search"
 
@@ -67,8 +69,8 @@ class Client:
         search_engine: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        tbm: Optional[str] = None,
-        device: Optional[str] = None,
+        tbm: Optional[TBM] = None,
+        device: Optional[Device] = None,
         timeframe: Optional[str] = None,
         gl: Optional[str] = None,
         lr: Optional[str] = None,
@@ -76,26 +78,22 @@ class Client:
         latitude: Optional[str] = None,
         longitude: Optional[str] = None,
     ) -> Any:
-        params = {
-            k: v
-            for k, v in {
-                "q": query,
-                "location": location,
-                "search_engine": search_engine,
-                "num": limit,
-                "start": offset,
-                "tbm": tbm,
-                "device": device,
-                "timeframe": timeframe,
-                "gl": gl,
-                "lr": lr,
-                "hl": hl,
-                "lat": latitude,
-                "lng": longitude,
-            }.items()
-            if v is not None
-        }
-        with self._session.get(SEARCH_URL, params=params) as resp:
+        search_input = SearchInput(
+            query,
+            location=location,
+            search_engine=search_engine,
+            limit=limit,
+            offset=offset,
+            tbm=tbm,
+            device=device,
+            timeframe=timeframe,
+            gl=gl,
+            lr=lr,
+            hl=hl,
+            latitude=latitude,
+            longitude=longitude,
+        )
+        with self._session.get(SEARCH_URL, params=search_input.to_params()) as resp:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
             return resp.json()

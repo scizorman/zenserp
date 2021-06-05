@@ -5,6 +5,7 @@ from typing import Optional
 import click
 
 from .client import Client
+from .search import TBM, Device
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
@@ -70,8 +71,8 @@ def search(
                 search_engine=search_engine,
                 limit=limit,
                 offset=offset,
-                tbm=tbm,
-                device=device,
+                tbm=None if tbm is None else TBM(tbm),
+                device=None if device is None else Device(device),
                 timeframe=timeframe,
                 gl=gl,
                 lr=lr,
