@@ -41,13 +41,13 @@ class Client:
             raise Exception(message)
         elif status_code == 404:
             # TODO: Raise a custom exception about the HTTP status 404.
-            raise response.raise_for_status()
+            response.raise_for_status()
         elif status_code == 500:
             # TODO: Raise a custom exception about the HTTP status 500.
             messages = response.json()["errors"].values()
             raise Exception(messages)
         else:
-            raise response.raise_for_status()
+            response.raise_for_status()
 
     def status(self) -> int:
         """Checks the remaining requests of your API key.

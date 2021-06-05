@@ -16,14 +16,14 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
     required=True,
 )
 @click.pass_context
-def cli(ctx: click.Context, api_key: str):
+def cli(ctx: click.Context, api_key: str) -> None:
     """The CLI to request Zenserp."""
     ctx.obj = api_key
 
 
 @cli.command()
 @click.pass_obj
-def status(api_key: str):
+def status(api_key: str) -> None:
     """Checks the remaining request of your API key."""
     with Client(api_key) as c:
         try:
