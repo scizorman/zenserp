@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional
+from typing import Optional, Union
 
 
 class TBM(Enum):
@@ -38,7 +38,7 @@ class SearchInput:
     latitude: Optional[str] = None
     longitude: Optional[str] = None
 
-    def to_params(self) -> dict:
+    def to_params(self) -> dict[str, Union[str, int]]:
         """Converts to query parameters for the 'search' endpoint of Zenserp.
 
         Returns:
