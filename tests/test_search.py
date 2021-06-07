@@ -1,6 +1,6 @@
 import pytest
 
-from zenserp.search import Device, SearchInput, TBM
+from zenserp.search import TBM, Device, SearchInput
 
 
 class TestSearchInput:
@@ -44,6 +44,6 @@ class TestSearchInput:
     )
 
     @pytest.mark.parametrize("search_input, expect", parameters)
-    def test_to_params(self, search_input: SearchInput, expect: dict) -> None:
+    def test_to_params(self, search_input, expect):
         params = search_input.to_params()
         assert all(params[k] == expect[k] for k in params.keys())
