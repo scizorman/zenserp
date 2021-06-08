@@ -6,6 +6,7 @@ from typing import Any, Optional, Type
 from requests import Response, Session
 
 from .search import TBM, Device, SearchInput
+from .status import Status
 
 STATUS_URL = "https://app.zenserp.com/api/v2/status"
 SEARCH_URL = "https://app.zenserp.com/api/v2/search"
@@ -56,16 +57,16 @@ class Client:
         else:
             response.raise_for_status()
 
-    def status(self) -> int:
+    def status(self) -> Status:
         """Checks the remaining requests of your API key.
 
         Returns:
-            int: The remaining requests of your API key.
+            :class:`Status`: The status of your API key.
         """
         with self._session.get(STATUS_URL) as resp:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
-            return resp.json()["remaining_requests"]
+            return Status(resp.json()["remaining_requests"])
 
     def search(
         self,

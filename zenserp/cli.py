@@ -21,7 +21,7 @@ def cli(ctx: click.Context, api_key: str) -> None:
 @cli.command()
 @click.pass_obj
 def status(api_key: str) -> None:
-    """Checks the remaining request of your API key."""
+    """Checks the status of your API key."""
     with Client(api_key) as c:
         try:
             remaining_requests = c.status()
