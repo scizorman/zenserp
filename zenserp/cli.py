@@ -1,5 +1,6 @@
 import json
 import sys
+from dataclasses import asdict
 from typing import Optional
 
 import click
@@ -15,6 +16,7 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 @click.pass_context
 def cli(ctx: click.Context, api_key: str) -> None:
     """The CLI to request Zenserp."""
+    ctx.ensure_object(str)
     ctx.obj = api_key
 
 
@@ -24,12 +26,12 @@ def status(api_key: str) -> None:
     """Checks the status of your API key."""
     with Client(api_key) as c:
         try:
-            remaining_requests = c.status()
+            status = c.status()
         except Exception as e:
             click.echo(message=e, err=True)
             sys.exit(1)
         else:
-            click.echo(message=remaining_requests)
+            click.echo(message=json.dumps(asdict(status), ensure_ascii=False, indent=2))
 
 
 @cli.command()
@@ -46,6 +48,7 @@ def status(api_key: str) -> None:
 @click.option("--hl", type=str, help="A language code that means the language to use for the Google Search.")
 @click.option("--latitude", type=str, help="A latitude of a geolocation used in the query.")
 @click.option("--longitude", type=str, help="A longitude of a geolocation used in the query.")
+@click.pass_obj
 def search(
     api_key: str,
     query: str,
