@@ -2,8 +2,22 @@
 name = "zenserp"
 version = "0.1.0"
 description = "The Python client library for Zenserp."
-authors = ["scizorman <tueda1207@gmail.com>"]
 license = "MIT"
+authors = ["scizorman <tueda1207@gmail.com>"]
+maintainers = ["scizorman <tueda1207@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/scizorman/zenserp"
+repository = "https://github.com/scizorman/zenserp"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
