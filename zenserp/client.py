@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import Optional, Type, cast
+from typing import Mapping, Optional, Type, cast
 
 from requests import Response, Session
 
+from .exceptions import status_handler
 from .search import SERP, TBM, Device, SearchInput
 from .status import Status
 
@@ -39,23 +40,11 @@ class Client:
         """Closes this client."""
         return self._session.close()
 
-    def handle_error(self, response: Response) -> None:
-        status_code = response.status_code
-        if status_code == 200:
-            return None
-        elif status_code == 403:
-            # TODO: Raise a custom exception about the HTTP status 403.
-            message = response.json()["error"]
-            raise Exception(message)
-        elif status_code == 404:
-            # TODO: Raise a custom exception about the HTTP status 404.
-            response.raise_for_status()
-        elif status_code == 500:
-            # TODO: Raise a custom exception about the HTTP status 500.
-            messages = response.json()["errors"].values()
-            raise Exception(messages)
-        else:
-            response.raise_for_status()
+    @status_handler
+    def _get(self, url: str, params: Optional[Mapping[str, str]] = None) -> Response:
+        with self._session.get(url, params=params) as resp:
+            resp.encoding = resp.apparent_encoding
+            return resp
 
     def status(self) -> Status:
         """Checks the remaining requests of your API key.
@@ -63,9 +52,7 @@ class Client:
         Returns:
             :class:`Status`: The status of your API key.
         """
-        with self._session.get(STATUS_URL) as resp:
-            resp.encoding = resp.apparent_encoding
-            self.handle_error(resp)
+        with self._get(STATUS_URL) as resp:
             return Status(resp.json()["remaining_requests"])
 
     def search(
@@ -125,7 +112,5 @@ class Client:
             latitude=latitude,
             longitude=longitude,
         )
-        with self._session.get(SEARCH_URL, params=search_input.to_params()) as resp:
-            resp.encoding = resp.apparent_encoding
-            self.handle_error(resp)
+        with self._get(SEARCH_URL, params=search_input.to_params()) as resp:
             return cast(SERP, resp.json())
