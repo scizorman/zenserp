@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import Any, Optional, Type
+from typing import Optional, Type, cast
 
 from requests import Response, Session
 
-from .search import TBM, Device, SearchInput
+from .search import SERP, TBM, Device, SearchInput
 from .status import Status
 
 STATUS_URL = "https://app.zenserp.com/api/v2/status"
@@ -83,7 +83,7 @@ class Client:
         hl: Optional[str] = None,
         latitude: Optional[str] = None,
         longitude: Optional[str] = None,
-    ) -> Any:
+    ) -> SERP:
         """Google Search.
 
         Args:
@@ -128,4 +128,4 @@ class Client:
         with self._session.get(SEARCH_URL, params=search_input.to_params()) as resp:
             resp.encoding = resp.apparent_encoding
             self.handle_error(resp)
-            return resp.json()
+            return cast(SERP, resp.json())

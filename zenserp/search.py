@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union
+from typing import Any, Optional, Union
+
+SERP = dict[str, Any]
 
 
 class TBM(Enum):
