@@ -47,10 +47,10 @@ class Client:
             return resp
 
     def status(self) -> Status:
-        """Checks the remaining requests of your API key.
+        """Checks the status of your API key.
 
         Returns:
-            :class:`Status`: The status of your API key.
+            The status of your API key.
         """
         with self._get(STATUS_URL) as resp:
             return Status(resp.json()["remaining_requests"])
@@ -74,28 +74,28 @@ class Client:
         """Google Search.
 
         Args:
-            query (str): A keyword to query.
-            location (:obj:`str`, optional): A geolocation used in the query.
-            search_engine (:obj:`str`, optional): A URL of the search engine to query.
-            limit (:obj:`int`, optional): A number of search results. It can be 1 - 100.
-            offset (:obj:`int`, optional): An offset for the search results.
-            tbm (:obj:`TBM`, optional): A type of the Google Search.
-            device (:obj:`Device`, optional): A device to use for the Google Search.
-            timeframe (:obj:`str`, optional): Time interval of you interests.
-            gl (:obj:`str`, optional):
+            query: A keyword to query.
+            location: A geolocation used in the query.
+            search_engine: A URL of the search engine to query.
+            limit: A number of search results. It can be 1 - 100.
+            offset: An offset for the search results.
+            tbm: A type of the Google Search.
+            device: A device to use for the Google Search.
+            timeframe: Time interval of you interests.
+            gl:
                 A country code that means the country to use for the Google Search.
                 It is automatically detected from the 'search_engine' if not supplied.
-            lr (:obj:`str`, optional):
+            lr:
                 One or multiple country codes that limits languages the Google Search.
                 It is automatically detected from the 'search_engine' if not supplied.
-            hl (:obj:`str`, optional):
+            hl:
                 A language code that means the language to use for the Google Search.
                 It is automatically detected from the 'search_engine' if not supplied.
-            latitude (:obj:`str`, optional): A latitude of a geolocation used in the query.
-            longitude (:obj:`str`, optional): A longitude of a geolocation used in the query.
+            latitude: A latitude of a geolocation used in the query.
+            longitude: A longitude of a geolocation used in the query.
 
         Returns:
-            dict: Search results from the search via Zenserp.
+            Search results from the search via Zenserp.
         """
         search_input = SearchInput(
             query,

@@ -44,7 +44,7 @@ class SearchInput:
         """Converts to query parameters for the 'search' endpoint of Zenserp.
 
         Returns:
-            dict: Query parameters for the 'search' endpoint of Zenserp.
+            Query parameters for the 'search' endpoint of Zenserp.
         """
         return {
             k: v
