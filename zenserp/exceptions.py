@@ -65,8 +65,6 @@ def status_handler(func: Callable[..., Response]) -> Callable[..., Response]:
                     raise WrongAPIKeyException("your API key is wrong")
                 else:
                     raise APILimitException("no request remains")
-            else:
-                resp.raise_for_status()
         elif status_code == 404:
             raise NotFoundException("not found")
         elif status_code == 500:
