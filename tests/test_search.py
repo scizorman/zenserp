@@ -12,8 +12,8 @@ class TestSearchInput:
                 search_engine="google.co.jp",
                 limit=5,
                 offset=10,
-                tbm=TBM("isch"),
-                device=Device("desktop"),
+                tbm=TBM.IMAGE_SEARCH,
+                device=Device.DESKTOP,
                 timeframe="w",
                 gl="JP",
                 lr="lang_en|lang_ja",
@@ -46,4 +46,4 @@ class TestSearchInput:
     @pytest.mark.parametrize("search_input, expect", parameters)
     def test_to_params(self, search_input, expect):
         params = search_input.to_params()
-        assert all(params[k] == expect[k] for k in params.keys())
+        assert params == expect
