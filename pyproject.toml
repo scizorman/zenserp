@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "zenserp"
 version = "0.1.0"
-description = "The Python client library for Zenserp."
+description = "The Python library for Zenserp."
 license = "MIT"
 authors = ["scizorman <tueda1207@gmail.com>"]
 maintainers = ["scizorman <tueda1207@gmail.com>"]

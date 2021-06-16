@@ -1,2 +1,3 @@
 # zenserp
-The Python client library for Zenserp.
+
+The Python library for Zenserp.
