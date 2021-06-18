@@ -14,14 +14,12 @@ SEARCH_URL = "https://app.zenserp.com/api/v2/search"
 
 
 class Client:
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str) -> None:
         """The client to request Zenserp.
 
         Args:
             api_key (str): Your API key of Zenserp.
         """
-        if api_key == "":
-            raise ValueError("no API key provided")
         self._session = Session()
         self._session.headers["apikey"] = api_key
 
