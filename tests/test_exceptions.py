@@ -1,3 +1,4 @@
+from pathlib import Path
 from uuid import uuid4
 
 import pytest
@@ -11,6 +12,11 @@ from zenserp.exceptions import (
     WrongAPIKeyException,
     status_handler,
 )
+
+ERROR_RESPONSES_DIR = Path(__file__).parent / "data/errors"
+NO_API_KEY_RESPONSE_JSON = ERROR_RESPONSES_DIR / "no_api_key.json"
+NOT_ENOUGH_REQUESTS_JSON = ERROR_RESPONSES_DIR / "not_enough_requests.json"
+INVALID_REQUEST_JSON = ERROR_RESPONSES_DIR / "invalid_request.json"
 
 
 def test_invalid_request_exception():
@@ -38,7 +44,7 @@ class TestStatusHandler:
         def return_no_api_key_response():
             resp = Response()
             resp.status_code = 403
-            with open("data/errors/no_api_key.json", "rb") as f:
+            with NO_API_KEY_RESPONSE_JSON.open("rb") as f:
                 resp._content = f.read()
             return resp
 
@@ -55,7 +61,7 @@ class TestStatusHandler:
                 "https://app.zenserp.com/api/v2/status",
                 headers={"apikey": "WRONG_API_KEY"},
             ).prepare()
-            with open("data/errors/not_enough_requests.json", "rb") as f:
+            with NOT_ENOUGH_REQUESTS_JSON.open("rb") as f:
                 resp._content = f.read()
             return resp
 
@@ -72,7 +78,7 @@ class TestStatusHandler:
                 "https://app.zenserp.com/api/v2/status",
                 headers={"apikey": uuid4().hex},
             ).prepare()
-            with open("data/errors/not_enough_requests.json", "rb") as f:
+            with NOT_ENOUGH_REQUESTS_JSON.open("rb") as f:
                 resp._content = f.read()
             return resp
 
@@ -94,7 +100,7 @@ class TestStatusHandler:
         def return_invalid_request_response():
             resp = Response()
             resp.status_code = 500
-            with open("data/errors/invalid_request.json", "rb") as f:
+            with INVALID_REQUEST_JSON.open("rb") as f:
                 resp._content = f.read()
             return resp
 
