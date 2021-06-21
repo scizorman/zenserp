@@ -1,8 +1,12 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Optional, Union
+from typing import Any, Iterable, Optional, Union
 
 SERP = dict[str, Any]
+HL = Iterable[dict[str, str]]
+GL = Iterable[dict[str, str]]
+Locations = Iterable[str]
+SearchEngines = Iterable[str]
 
 
 class TBM(Enum):

@@ -6,11 +6,15 @@ from typing import Mapping, Optional, Type, cast
 from requests import Response, Session
 
 from .exceptions import status_handler
-from .search import SERP, TBM, Device, SearchInput
+from .search import GL, HL, SERP, TBM, Device, Locations, SearchEngines, SearchInput
 from .status import Status
 
 STATUS_URL = "https://app.zenserp.com/api/v2/status"
 SEARCH_URL = "https://app.zenserp.com/api/v2/search"
+HL_URL = "https://app.zenserp.com/api/v2/hl"
+GL_URL = "https://app.zenserp.com/api/v2/hl"
+LOCATIONS_URL = "https://app.zenserp.com/api/v2/locations"
+SEARCH_ENGINES_URL = "https://app.zenserp.com/api/v2/search_engines"
 
 
 class Client:
@@ -112,3 +116,39 @@ class Client:
         )
         with self._get(SEARCH_URL, params=search_input.to_params()) as resp:
             return cast(SERP, resp.json())
+
+    def hl(self) -> HL:
+        """List all supported hl parameters.
+
+        Returns:
+            All supported hl parameters.
+        """
+        with self._get(HL_URL) as resp:
+            return cast(HL, resp.json())
+
+    def gl(self) -> GL:
+        """List all supported gl parameters.
+
+        Returns:
+            All supported gl parameters.
+        """
+        with self._get(GL_URL) as resp:
+            return cast(GL, resp.json())
+
+    def locations(self) -> Locations:
+        """List all supported geo locations.
+
+        Returns:
+            All supported geo locations.
+        """
+        with self._get(LOCATIONS_URL) as resp:
+            return cast(Locations, resp.json())
+
+    def search_engines(self) -> SearchEngines:
+        """List all supported Google search engines.
+
+        Returns:
+            All supported Google search engines.
+        """
+        with self._get(SEARCH_ENGINES_URL) as resp:
+            return cast(SearchEngines, resp.json())

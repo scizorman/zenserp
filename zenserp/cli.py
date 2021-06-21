@@ -88,3 +88,59 @@ def search(
             sys.exit(1)
         else:
             click.echo(message=json.dumps(serp, ensure_ascii=False, indent=2))
+
+
+@cli.command()
+@click.pass_obj
+def hl(api_key: str) -> None:
+    """List all supported hl parameters."""
+    with Client(api_key) as c:
+        try:
+            hl = c.hl()
+        except Exception as e:
+            click.echo(message=e, err=True)
+            sys.exit(1)
+        else:
+            click.echo(message=json.dumps(hl, ensure_ascii=False, indent=2))
+
+
+@cli.command()
+@click.pass_obj
+def gl(api_key: str) -> None:
+    """List all supported gl parameters."""
+    with Client(api_key) as c:
+        try:
+            gl = c.gl()
+        except Exception as e:
+            click.echo(message=e, err=True)
+            sys.exit(1)
+        else:
+            click.echo(message=json.dumps(gl, ensure_ascii=False, indent=2))
+
+
+@cli.command()
+@click.pass_obj
+def locations(api_key: str) -> None:
+    """List all supported geo locations."""
+    with Client(api_key) as c:
+        try:
+            locations = c.locations()
+        except Exception as e:
+            click.echo(message=e, err=True)
+            sys.exit(1)
+        else:
+            click.echo(message=json.dumps(locations, ensure_ascii=False, indent=2))
+
+
+@cli.command()
+@click.pass_obj
+def search_engines(api_key: str) -> None:
+    """List all supported Google search engines."""
+    with Client(api_key) as c:
+        try:
+            search_engines = c.search_engines()
+        except Exception as e:
+            click.echo(message=e, err=True)
+            sys.exit(1)
+        else:
+            click.echo(message=json.dumps(search_engines, ensure_ascii=False, indent=2))
