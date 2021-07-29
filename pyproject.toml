@@ -31,7 +31,6 @@ mypy = "0.910"
 pre-commit = "2.13.0"
 pytest = "6.2.4"
 pytest-cov = "2.12.1"
-types-requests = "2.25.0"
 
 [tool.black]
 line-length = 120
