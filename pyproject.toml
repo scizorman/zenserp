@@ -43,7 +43,7 @@ target-version = ["py39"]
 
 [tool.isort]
 profile = "black"
-multi_line_output = 3
+line_length = 120
 
 [tool.pytest.ini_options]
 addopts = "--cov zenserp --cov-report xml -v"
