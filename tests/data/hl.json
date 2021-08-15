@@ -1,0 +1,602 @@
+[
+  {
+    "code": "te",
+    "name": "తెలుగు"
+  },
+  {
+    "code": "haw",
+    "name": "ʻŌlelo Hawaiʻi"
+  },
+  {
+    "code": "pcm",
+    "name": "Nigerian Pidgin"
+  },
+  {
+    "code": "gaa",
+    "name": "Ga"
+  },
+  {
+    "code": "ps",
+    "name": "پښتو"
+  },
+  {
+    "code": "eu",
+    "name": "euskara"
+  },
+  {
+    "code": "fy",
+    "name": "Frysk"
+  },
+  {
+    "code": "tt",
+    "name": "татар"
+  },
+  {
+    "code": "ro",
+    "name": "română"
+  },
+  {
+    "code": "pa",
+    "name": "ਪੰਜਾਬੀ"
+  },
+  {
+    "code": "fi",
+    "name": "suomi"
+  },
+  {
+    "code": "mk",
+    "name": "македонски"
+  },
+  {
+    "code": "tr",
+    "name": "Türkçe"
+  },
+  {
+    "code": "om",
+    "name": "Oromoo"
+  },
+  {
+    "code": "ht",
+    "name": "Haitian Creole"
+  },
+  {
+    "code": "tlh",
+    "name": "Klingon"
+  },
+  {
+    "code": "rn",
+    "name": "Ikirundi"
+  },
+  {
+    "code": "tn",
+    "name": "Tswana"
+  },
+  {
+    "code": "tk",
+    "name": "türkmen dili"
+  },
+  {
+    "code": "ga",
+    "name": "Gaeilge"
+  },
+  {
+    "code": "bg",
+    "name": "български"
+  },
+  {
+    "code": "uk",
+    "name": "українська"
+  },
+  {
+    "code": "kri",
+    "name": "Krio (Sierra Leone)"
+  },
+  {
+    "code": "chr",
+    "name": "ᏣᎳᎩ"
+  },
+  {
+    "code": "gu",
+    "name": "ગુજરાતી"
+  },
+  {
+    "code": "so",
+    "name": "Soomaali"
+  },
+  {
+    "code": "xh",
+    "name": "isiXhosa"
+  },
+  {
+    "code": "sw",
+    "name": "Kiswahili"
+  },
+  {
+    "code": "lg",
+    "name": "Luganda"
+  },
+  {
+    "code": "kn",
+    "name": "ಕನ್ನಡ"
+  },
+  {
+    "code": "ug",
+    "name": "ئۇيغۇرچە"
+  },
+  {
+    "code": "ar",
+    "name": "العربية"
+  },
+  {
+    "code": "my",
+    "name": "မြန်မာ"
+  },
+  {
+    "code": "tum",
+    "name": "Tumbuka"
+  },
+  {
+    "code": "hi",
+    "name": "हिन्दी"
+  },
+  {
+    "code": "ko",
+    "name": "한국어"
+  },
+  {
+    "code": "yi",
+    "name": "ייִדיש"
+  },
+  {
+    "code": "ckb",
+    "name": "کوردیی ناوەندی"
+  },
+  {
+    "code": "sv",
+    "name": "svenska"
+  },
+  {
+    "code": "et",
+    "name": "eesti"
+  },
+  {
+    "code": "de",
+    "name": "Deutsch"
+  },
+  {
+    "code": "mi",
+    "name": "Māori"
+  },
+  {
+    "code": "ach",
+    "name": "Acoli"
+  },
+  {
+    "code": "az",
+    "name": "azərbaycan"
+  },
+  {
+    "code": "gd",
+    "name": "Gàidhlig"
+  },
+  {
+    "code": "hu",
+    "name": "magyar"
+  },
+  {
+    "code": "hr",
+    "name": "hrvatski"
+  },
+  {
+    "code": "br",
+    "name": "brezhoneg"
+  },
+  {
+    "code": "fr",
+    "name": "français"
+  },
+  {
+    "code": "ta",
+    "name": "தமிழ்"
+  },
+  {
+    "code": "mr",
+    "name": "मराठी"
+  },
+  {
+    "code": "uz",
+    "name": "o‘zbek"
+  },
+  {
+    "code": "es-419",
+    "name": "español (Latinoamérica)"
+  },
+  {
+    "code": "oc",
+    "name": "Occitan"
+  },
+  {
+    "code": "sk",
+    "name": "slovenčina"
+  },
+  {
+    "code": "be",
+    "name": "беларуская"
+  },
+  {
+    "code": "ru",
+    "name": "русский"
+  },
+  {
+    "code": "yo",
+    "name": "Èdè Yorùbá"
+  },
+  {
+    "code": "pt-PT",
+    "name": "português (Portugal)"
+  },
+  {
+    "code": "rw",
+    "name": "Kinyarwanda"
+  },
+  {
+    "code": "sn",
+    "name": "chiShona"
+  },
+  {
+    "code": "sr",
+    "name": "српски"
+  },
+  {
+    "code": "sl",
+    "name": "slovenščina"
+  },
+  {
+    "code": "ceb",
+    "name": "Binisaya"
+  },
+  {
+    "code": "is",
+    "name": "íslenska"
+  },
+  {
+    "code": "nso",
+    "name": "Northern Sotho"
+  },
+  {
+    "code": "crs",
+    "name": "Seychellois Creole"
+  },
+  {
+    "code": "id",
+    "name": "Indonesia"
+  },
+  {
+    "code": "or",
+    "name": "ଓଡ଼ିଆ"
+  },
+  {
+    "code": "mg",
+    "name": "Malagasy"
+  },
+  {
+    "code": "bem",
+    "name": "Ichibemba"
+  },
+  {
+    "code": "ia",
+    "name": "interlingua"
+  },
+  {
+    "code": "sd",
+    "name": "سنڌي"
+  },
+  {
+    "code": "ln",
+    "name": "lingála"
+  },
+  {
+    "code": "fil",
+    "name": "Filipino"
+  },
+  {
+    "code": "la",
+    "name": "Latin"
+  },
+  {
+    "code": "si",
+    "name": "සිංහල"
+  },
+  {
+    "code": "lt",
+    "name": "lietuvių"
+  },
+  {
+    "code": "mt",
+    "name": "Malti"
+  },
+  {
+    "code": "qu",
+    "name": "Runasimi"
+  },
+  {
+    "code": "nyn",
+    "name": "Runyankore"
+  },
+  {
+    "code": "xx-hacker",
+    "name": "Hacker"
+  },
+  {
+    "code": "xx-pirate",
+    "name": "Pirate"
+  },
+  {
+    "code": "jw",
+    "name": "Jawa"
+  },
+  {
+    "code": "ca",
+    "name": "català"
+  },
+  {
+    "code": "zh-CN",
+    "name": "中文 (简体)"
+  },
+  {
+    "code": "fa",
+    "name": "فارسی"
+  },
+  {
+    "code": "pl",
+    "name": "polski"
+  },
+  {
+    "code": "to",
+    "name": "lea fakatonga"
+  },
+  {
+    "code": "ne",
+    "name": "नेपाली"
+  },
+  {
+    "code": "su",
+    "name": "Sundanese"
+  },
+  {
+    "code": "af",
+    "name": "Afrikaans"
+  },
+  {
+    "code": "cs",
+    "name": "čeština"
+  },
+  {
+    "code": "lv",
+    "name": "latviešu"
+  },
+  {
+    "code": "hy",
+    "name": "հայերեն"
+  },
+  {
+    "code": "kk",
+    "name": "қазақ тілі"
+  },
+  {
+    "code": "nl",
+    "name": "Nederlands"
+  },
+  {
+    "code": "xx-elmer",
+    "name": "Elmer Fudd"
+  },
+  {
+    "code": "tl",
+    "name": "Filipino"
+  },
+  {
+    "code": "ja",
+    "name": "日本語"
+  },
+  {
+    "code": "sr-ME",
+    "name": "srpski (Crna Gora)"
+  },
+  {
+    "code": "ur",
+    "name": "اردو"
+  },
+  {
+    "code": "no",
+    "name": "norsk"
+  },
+  {
+    "code": "ky",
+    "name": "кыргызча"
+  },
+  {
+    "code": "pt-BR",
+    "name": "português (Brasil)"
+  },
+  {
+    "code": "zh-TW",
+    "name": "中文 (繁體)"
+  },
+  {
+    "code": "ka",
+    "name": "ქართული"
+  },
+  {
+    "code": "mn",
+    "name": "монгол"
+  },
+  {
+    "code": "th",
+    "name": "ไทย"
+  },
+  {
+    "code": "ha",
+    "name": "Hausa"
+  },
+  {
+    "code": "es",
+    "name": "español"
+  },
+  {
+    "code": "lo",
+    "name": "ລາວ"
+  },
+  {
+    "code": "it",
+    "name": "italiano"
+  },
+  {
+    "code": "en",
+    "name": "English"
+  },
+  {
+    "code": "co",
+    "name": "Corsican"
+  },
+  {
+    "code": "zu",
+    "name": "isiZulu"
+  },
+  {
+    "code": "st",
+    "name": "Southern Sotho"
+  },
+  {
+    "code": "gl",
+    "name": "galego"
+  },
+  {
+    "code": "mfe",
+    "name": "kreol morisien"
+  },
+  {
+    "code": "sq",
+    "name": "shqip"
+  },
+  {
+    "code": "nn",
+    "name": "nynorsk"
+  },
+  {
+    "code": "iw",
+    "name": "עברית"
+  },
+  {
+    "code": "cy",
+    "name": "Cymraeg"
+  },
+  {
+    "code": "wo",
+    "name": "Wolof"
+  },
+  {
+    "code": "tg",
+    "name": "тоҷикӣ"
+  },
+  {
+    "code": "bs",
+    "name": "bosanski"
+  },
+  {
+    "code": "el",
+    "name": "Ελληνικά"
+  },
+  {
+    "code": "ti",
+    "name": "ትግርኛ"
+  },
+  {
+    "code": "ee",
+    "name": "Eʋegbe"
+  },
+  {
+    "code": "sr-Latn",
+    "name": "srpski (latinica)"
+  },
+  {
+    "code": "fo",
+    "name": "føroyskt"
+  },
+  {
+    "code": "vi",
+    "name": "Tiếng Việt"
+  },
+  {
+    "code": "gn",
+    "name": "Guarani"
+  },
+  {
+    "code": "ny",
+    "name": "Nyanja"
+  },
+  {
+    "code": "ml",
+    "name": "മലയാളം"
+  },
+  {
+    "code": "xx-bork",
+    "name": "Bork, bork, bork!"
+  },
+  {
+    "code": "ak",
+    "name": "Akan"
+  },
+  {
+    "code": "kg",
+    "name": "Kongo"
+  },
+  {
+    "code": "bn",
+    "name": "বাংলা"
+  },
+  {
+    "code": "km",
+    "name": "ខ្មែរ"
+  },
+  {
+    "code": "am",
+    "name": "አማርኛ"
+  },
+  {
+    "code": "eo",
+    "name": "esperanto"
+  },
+  {
+    "code": "ig",
+    "name": "Asụsụ Igbo"
+  },
+  {
+    "code": "tw",
+    "name": "Twi"
+  },
+  {
+    "code": "ms",
+    "name": "Melayu"
+  },
+  {
+    "code": "ban",
+    "name": "Balinese"
+  },
+  {
+    "code": "rm",
+    "name": "rumantsch"
+  },
+  {
+    "code": "lua",
+    "name": "Luba-Lulua"
+  },
+  {
+    "code": "da",
+    "name": "dansk"
+  },
+  {
+    "code": "loz",
+    "name": "Lozi"
+  }
+]
