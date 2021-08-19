@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import Iterable, Optional, Type, cast
+from typing import Any, Iterable, Mapping, Optional, Type, cast
 
 from aiohttp import ClientSession
 
+from .exceptions import handle_status
 from .model import GL, HL, SERP, TBM, Device, Location, SearchEngine, Status
 
 
@@ -36,6 +37,20 @@ class Client:
         """Closes this client."""
         await self.__session.close()
 
+    async def _get(self, url: str, params: Optional[Mapping[str, str]] = None) -> Any:
+        """Sends a HTTP GET request to Zenserp.
+
+        Args:
+            url: A Zenserp endpoint to send a HTTP GET request.
+            params: Parameters to be sent in the query string.
+
+        Returns:
+            A decoded Zenserp JSON response.
+        """
+        async with self.__session.get(url, params=params) as response:
+            await handle_status(response)
+            return await response.json()
+
     async def status(self) -> Status:
         """Checks the status of your API key.
 
@@ -43,9 +58,8 @@ class Client:
             The status of your API key.
         """
         url = f"{self.base_url}/status"
-        async with self.__session.get(url) as resp:
-            body = await resp.json()
-            return Status(body["remaining_requests"])
+        data = await self._get(url)
+        return Status(data["remaining_requests"])
 
     async def search(
         self,
@@ -91,7 +105,7 @@ class Client:
         """
         url = f"{self.base_url}/search"
         params = {
-            k: v
+            k: str(v)
             for k, v in {
                 "q": query,
                 "location": location,
@@ -109,9 +123,8 @@ class Client:
             }.items()
             if v is not None
         }
-        async with self.__session.get(url, params=params) as resp:
-            body = await resp.json()
-            return cast(SERP, body)
+        data = await self._get(url, params=params)
+        return cast(SERP, data)
 
     async def hl(self) -> Iterable[HL]:
         """List all supported hl parameters.
@@ -120,9 +133,8 @@ class Client:
             All supported hl parameters.
         """
         url = f"{self.base_url}/hl"
-        async with self.__session.get(url) as resp:
-            body = await resp.json()
-            return [HL(row["code"], row["name"]) for row in body]
+        data = await self._get(url)
+        return [HL(row["code"], row["name"]) for row in data]
 
     async def gl(self) -> Iterable[GL]:
         """List all supported gl parameters.
@@ -131,9 +143,8 @@ class Client:
             All supported gl parameters.
         """
         url = f"{self.base_url}/gl"
-        async with self.__session.get(url) as resp:
-            body = await resp.json()
-            return [GL(row["code"], row["name"]) for row in body]
+        data = await self._get(url)
+        return [GL(row["code"], row["name"]) for row in data]
 
     async def locations(self) -> Iterable[Location]:
         """List all supported geo locations.
@@ -142,9 +153,8 @@ class Client:
             All supported geo locations.
         """
         url = f"{self.base_url}/locations"
-        async with self.__session.get(url) as resp:
-            body = await resp.json()
-            return [cast(Location, row) for row in body]
+        data = await self._get(url)
+        return [cast(Location, row) for row in data]
 
     async def search_engines(self) -> Iterable[SearchEngine]:
         """List all supported Google search engines.
@@ -153,6 +163,5 @@ class Client:
             All supported Google search engines.
         """
         url = f"{self.base_url}/search_engines"
-        async with self.__session.get(url) as resp:
-            body = await resp.json()
-            return [cast(SearchEngine, row) for row in body]
+        data = await self._get(url)
+        return [cast(SearchEngine, row) for row in data]

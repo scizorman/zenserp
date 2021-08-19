@@ -1,9 +1,11 @@
 from typing import Iterable
 
+import pytest
 from aiohttp import web
 from aiohttp.test_utils import AioHTTPTestCase, unittest_run_loop
 
 from zenserp import Client
+from zenserp.exceptions import APILimitException, NoAPIKeyException
 from zenserp.model import GL, HL, Location, SearchEngine, Status
 
 from .mock_zenserp import VALID_API_KEY, init_mock_zenserp
@@ -12,6 +14,20 @@ from .mock_zenserp import VALID_API_KEY, init_mock_zenserp
 class TestClient(AioHTTPTestCase):
     async def get_application(self) -> web.Application:
         return init_mock_zenserp()
+
+    @unittest_run_loop
+    async def test_no_api_key_exception(self) -> None:
+        with pytest.raises(NoAPIKeyException):
+            async with Client("") as client:
+                client.base_url = f"{self.server.scheme}://{self.server.host}:{self.server.port}"
+                await client.status()
+
+    @unittest_run_loop
+    async def test_api_limit_exception(self) -> None:
+        with pytest.raises(APILimitException):
+            async with Client("LIMIT_EXHAUSTED_API_KEY") as client:
+                client.base_url = f"{self.server.scheme}://{self.server.host}:{self.server.port}"
+                await client.status()
 
     @unittest_run_loop
     async def test_status(self) -> None:

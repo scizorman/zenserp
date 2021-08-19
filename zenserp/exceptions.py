@@ -1,5 +1,7 @@
 from typing import Mapping
 
+from aiohttp import ClientResponse
+
 
 class ZenserpException(Exception):
     """There was an ambiguous exception that occurred while requesting to Zenserp."""
@@ -40,3 +42,27 @@ class InvalidRequestException(ZenserpException):
     def __str__(self) -> str:
         error_messages = ", ".join(f"{k}: {v.replace('.', '')}" for k, v in self._errors.items())
         return f"invalid request: ({error_messages})"
+
+
+async def handle_status(response: ClientResponse) -> None:
+    status = response.status
+    if status == 200:
+        return
+    elif status == 403:
+        data = await response.json()
+        error = data.get("error")
+        if error == "No apikey provided.":
+            raise NoAPIKeyException("no API key is provided")
+        elif error == "Not enough requests.":
+            raise APILimitException("no request remains")
+        else:
+            response.raise_for_status()
+    elif status == 404:
+        raise NotFoundException("not found")
+    elif status == 500:
+        data = await response.json()
+        # TODO: If the response is an unexpected one, execute 'response.raise_for_status()'.
+        errors = data.get("errors")[0]
+        raise InvalidRequestException(errors)
+    else:
+        response.raise_for_status()
