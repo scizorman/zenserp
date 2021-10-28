@@ -21,8 +21,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-click = "8.0.1"
-requests = "2.25.1"
+aiohttp = {extras = ["speedups"], version = "3.7.4.post0"}
 
 [tool.poetry.dev-dependencies]
 black = "21.5b2"
@@ -30,12 +29,9 @@ flake8 = "3.9.2"
 isort = "5.9.3"
 mypy = "0.910"
 pre-commit = "2.15.0"
-pytest = "6.2.4"
+pytest = "6.2.5"
+pytest-aiohttp = "0.3.0"
 pytest-cov = "2.12.1"
-types-requests = "2.25.0"
-
-[tool.poetry.scripts]
-zenserp = "zenserp.cli:cli"
 
 [tool.black]
 line-length = 120

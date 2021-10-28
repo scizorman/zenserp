@@ -1,8 +1,6 @@
-from functools import wraps
-from typing import Any, Callable, Mapping
-from uuid import UUID
+from typing import Mapping
 
-from requests import Response
+from aiohttp import ClientResponse
 
 
 class ZenserpException(Exception):
@@ -46,32 +44,25 @@ class InvalidRequestException(ZenserpException):
         return f"invalid request: ({error_messages})"
 
 
-def status_handler(func: Callable[..., Response]) -> Callable[..., Response]:
-    @wraps(func)
-    def wrapper(*args: Any, **kwargs: Any) -> Response:
-        resp = func(*args, **kwargs)
-        status_code = resp.status_code
-        if status_code == 200:
-            pass
-        elif status_code == 403:
-            message = resp.json()["error"]
-            if message == "No apikey provided.":
-                raise NoAPIKeyException("no API key is provided")
-            elif message == "Not enough requests.":
-                api_key = resp.request.headers["apikey"]
-                try:
-                    UUID(hex=api_key)
-                except ValueError:
-                    raise WrongAPIKeyException("your API key is wrong")
-                else:
-                    raise APILimitException("no request remains")
-        elif status_code == 404:
-            raise NotFoundException("not found")
-        elif status_code == 500:
-            errors = resp.json()["errors"][0]
-            raise InvalidRequestException(errors)
+async def handle_status(response: ClientResponse) -> None:
+    status = response.status
+    if status == 200:
+        return
+    elif status == 403:
+        data = await response.json()
+        error = data.get("error")
+        if error == "No apikey provided.":
+            raise NoAPIKeyException("no API key is provided")
+        elif error == "Not enough requests.":
+            raise APILimitException("no request remains")
         else:
-            resp.raise_for_status()
-        return resp
-
-    return wrapper
+            response.raise_for_status()
+    elif status == 404:
+        raise NotFoundException("not found")
+    elif status == 500:
+        data = await response.json()
+        # TODO: If the response is an unexpected one, execute 'response.raise_for_status()'.
+        errors = data.get("errors")[0]
+        raise InvalidRequestException(errors)
+    else:
+        response.raise_for_status()
