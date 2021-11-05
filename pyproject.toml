@@ -21,17 +21,17 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-aiohttp = {extras = ["speedups"], version = "3.7.4.post0"}
+aiohttp = {extras = ["speedups"], version = "3.8.0"}
 
 [tool.poetry.dev-dependencies]
-black = "21.5b2"
-flake8 = "3.9.2"
-isort = "5.9.3"
+black = "21.10b0"
+flake8 = "4.0.1"
+isort = "5.10.0"
 mypy = "0.910"
 pre-commit = "2.15.0"
 pytest = "6.2.5"
 pytest-aiohttp = "0.3.0"
-pytest-cov = "2.12.1"
+pytest-cov = "3.0.0"
 
 [tool.black]
 line-length = 120
