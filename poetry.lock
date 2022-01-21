@@ -464,7 +464,7 @@ testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xm
 
 [[package]]
 name = "pytest-aiohttp"
-version = "1.0.2"
+version = "1.0.3"
 description = "Pytest plugin for aiohttp support"
 category = "dev"
 optional = false
@@ -589,7 +589,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a75b4c7e6b177bd5de4ff1c5741c0d6852bc0e55670398e2c3779a9bee929e57"
+content-hash = "a6e02acf2595417d4e6c4992bddba416fa1c3b26f7e6cae3ec89b2638e9e77b0"
 
 [metadata.files]
 aiodns = [
@@ -1179,8 +1179,8 @@ pytest = [
     {file = "pytest-6.2.5.tar.gz", hash = "sha256:131b36680866a76e6781d13f101efb86cf674ebb9762eb70d3082b6f29889e89"},
 ]
 pytest-aiohttp = [
-    {file = "pytest-aiohttp-1.0.2.tar.gz", hash = "sha256:7b3c40a446058a3a58b1d25323985d8dd9117eea435f77689e6f7d2b36e0a720"},
-    {file = "pytest_aiohttp-1.0.2-py3-none-any.whl", hash = "sha256:f775b523c3ad6da0e267fdfeb51f004b46f08c14ac809d25f1a15559969fec76"},
+    {file = "pytest-aiohttp-1.0.3.tar.gz", hash = "sha256:0c8feb48dc8eb80870e2b153acaf62bbbcc207977ebcb74365ffcfe16adc9f15"},
+    {file = "pytest_aiohttp-1.0.3-py3-none-any.whl", hash = "sha256:51d8e0ac8799ebedb76ed7f6cf28cd9159cd2b5757ebdc8195a5766eb7a2afe9"},
 ]
 pytest-asyncio = [
     {file = "pytest-asyncio-0.17.2.tar.gz", hash = "sha256:6d895b02432c028e6957d25fc936494e78c6305736e785d9fee408b1efbc7ff4"},
