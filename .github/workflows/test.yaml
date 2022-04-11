@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: python-${{ steps.setup-python.outputs.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
+          key: python-${{ matrix.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: |
           poetry config virtualenvs.in-project true
