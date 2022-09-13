@@ -16,7 +16,7 @@ class NoAPIKeyException(ZenserpException):
 
 
 class WrongAPIKeyException(ZenserpException):
-    """This exception occurs when you API key is wrong."""
+    """This exception occurs when your API key is wrong."""
 
     pass
 
